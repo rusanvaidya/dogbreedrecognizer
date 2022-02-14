@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(black, rgba(0, 0, 0, 0.5), black), url('../img/wallpaper.png');
+    background-size: cover;
+}
+#modal{
+    z-index: 1;
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.356);
+    top: 0;
+    left: 0;
+}
+.new_search{
+    width: 400px;
+    height: 380px;
+    background-color: rgb(14, 14, 14);
+    position: absolute;
+    box-shadow: 0 0 2px 2px white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    border-radius: 15px;
+    animation: 1s fadein;
+}
+@keyframes fadein {
+    from{top: 30%; opacity: 0;}
+    to{top: 50%; opacity: 1;}
+}
+.new_search input[type='file']{
+    display: none;
+}
+#preview, .show-result img{
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+.show-result{
+    width: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: justify;
+    color: white;
+    overflow-y: auto;
+    font-size: 20px;
+}
+.img-dog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.img-dog img:hover{
+    cursor: pointer;
+    background-color: rgb(53, 20, 5);
+}
+
+.btn{
+    padding: 10px 12px;
+    border: 2px solid white;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.top-margin{
+    margin-top: 15px;
+}
+.btn:hover{
+    background-color: rgba(128, 128, 128, 0.507);
+}
+.header
+{
+    position: relative;
+}
+.header h1
+{
+    margin-left: 7px;
+}
+.close
+{
+    padding: 6px 12px;
+    position: absolute;
+    border: none;
+    top: 0;
+    right: 3px;
+    margin: 2px;
+}
+.nsearch
+{
+    margin: 0 auto;
+    text-align: center;
+}
+@media only screen and (max-width:700px){
+    .new_search,.show-result{
+        width: 90%;
+    }
+}

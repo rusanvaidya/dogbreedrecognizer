@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dog Breed Identifier</title>
+    </head>
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <body>
+        <div class="container">
+            <div id="modal">
+                <div class="new_search">
+                    <div class="header">
+                        <h1>Identify Dog Breed</h1>
+                        <button onclick="document.getElementById('modal').style.display='none'" class="btn close">&times;</button>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data" action="identify_breed">
+                        {% csrf_token %}
+                        <div class="img-dog">
+                            <label for="dog_file"><img id="preview" src="../static/img/dog_icon.png"></label>
+                            <input type="file" id="dog_file" name="dog_pic">
+                            <button type="submit" class="btn top-margin">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="show-result">
+                {% if dog_url is None %}
+                {% else %}
+                <img src="{{dog_url}}">
+                <h1>{{dog}}</h1>
+                {{dog_details}}<br>
+                {% endif %}
+                <div class="nsearch">
+                    <button onclick="document.getElementById('modal').style.display='block';" class="btn top-margin">Identify Breed</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    {% if ip_addr == 'not available' %}
+    <script>
+        document.getElementById('modal').style.display='block';
+    </script>
+    {% endif %}
+
+    <script>
+        const imgInp = document.getElementById('dog_file');
+        const preview = document.getElementById('preview');
+        imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            preview.style.display='block';
+            preview.src = URL.createObjectURL(file)
+        }
+        }
+
+    </script>
+</html>
